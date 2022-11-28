@@ -36,10 +36,9 @@ def add_contact(contact):
 
     if name in contacts_dict:
         raise ValueError('This contact already exist.')
-#    contacts_dict[name] = phone
     record = Record(name)
-    for phone in phones:                                             #??????
-        record.add_phone(phone)                                     #??????
+    for phone in phones:                                             
+        record.add_phone(phone)                                     
     contacts_dict.add_record(record)
     return f'You added new contact: {name} - phonenumber: {phones}.'
 
@@ -47,13 +46,9 @@ def add_contact(contact):
 @input_error
 def change_phonenumber(contact):
     name, phones = create_contact(contact)
-#    if name in contacts_dict:
-#        contacts_dict[name] = phone
-#        return f"{name}'s phone is changed to {phone}."
     record = contacts_dict[name]
     record.change_phones(phones)
     return "Phones have been changed."
-#    return "Contact isn't detected. Add new contact."
 
 #---------------------Функція виводу книги контактів---------
 @input_error
@@ -66,9 +61,6 @@ def show_contactbook():
 #---------------------Функція пошуку номера існуючого контакту---------
 @input_error
 def search_phonenumber(value):
-#    if name.strip() not in contacts_dict:
-#        raise ValueError('This contact does not exist.')
-#    return contacts_dict.get(name.strip())
     return contacts_dict.search(value.strip()).get_info()
 
 #---------------------Функція видалення існуючого контакту---------
@@ -120,8 +112,6 @@ def reaction_func(reaction):
 #---------------------Функція створення нового контакту---------
 def create_contact(contact):
     name, *phones = contact.strip().split(" ")
-#    name = new_contact[0]
-#    phone = new_contact[1]
     if name.isdigit():
         raise ValueError('You entered wrong name.')
     for phone in phones:
