@@ -13,16 +13,12 @@ class Name(Field):
 class Phone(Field):
     pass
 
-#class EMail(Field):
-#   pass
-
 #---------створюємо Клас Record, який відповідає за логіку додавання/видалення/редагування
 #---------необов'язкових полів та зберігання обов'язкового поля Name.
 class Record:
     def __init__(self, name) -> None:
         self.name = Name(name)
         self.phones = []
-#       self.e_mail = []
 
     def get_info(self):
         phones_info = ""
@@ -58,7 +54,7 @@ class AddressBook(UserDict):
         return self.data
 
     def has_record(self, name):
-        return bool(self.data.get(name))
+        return name in self.data
 
     def get_record(self, name):
         return self.data.get(name)
